@@ -1,0 +1,83 @@
+  /* Navbar Styling */
+
+  .navbar-brand img {
+    width: 100px;
+    height: auto;
+  }
+
+  /* Navbar Links Styling */
+  .navbar-nav .nav-link {
+    font-size: 15px;
+    margin: 0 12px;
+    color: #FFFAFB;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #7DE2D1;
+    font-weight: 600;
+  }
+
+  /* Button Styling */
+/* Styling for the profile button */
+.btn img {
+  width: 40px;  /* Adjust the width as needed */
+  object-fit: cover; /* Ensures the image covers the area without distorting */
+}
+
+.btn {
+  padding: 5px; /* Adds padding around the image */
+  display: inline-flex; /* Keeps the button properly aligned */
+  align-items: center; /* Centers the image vertically */
+  justify-content: center; /* Centers the image horizontally */
+}
+
+/* Additional styling for button appearance */
+.btn:hover {
+  background-color: transparent; /* Optional: change on hover */
+}
+
+/* Ensures the button has no border and a clear background */
+.btn {
+  background: none;
+  border: none; /* Removes default button styling */
+  cursor: pointer; /* Indicates button is clickable */
+}
+
+/* Ensures the button does not shift layout when focused or clicked */
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+  /* Center Navbar Links */
+  .navbar-nav {
+    margin: 0 auto;
+  }
+/* Custom Styles for Login/Signup links */
+.login-signup {
+  display: none; /* Initially hidden */
+  position: absolute;
+  right: 0;
+  background: #252525; /* Dark background for dropdown */
+  padding: 8px 12px; /* Padding around links */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Subtle shadow for 3D effect */
+  z-index: 1000; /* Ensures dropdown appears above other content */
+}
+
+.login-signup-link {
+  color: #FFFAFB; /* Light color for contrast */
+  display: block;
+  padding: 6px 0; /* Vertical padding for touch targets */
+  text-align: center; /* Center-align text */
+  text-decoration: none; /* No underlines */
+  font-weight: bold; /* Bold font for better readability */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.login-signup-link:hover {
+  color: #339989; /* Highlight color on hover */
+  text-decoration: none;
+}
+
