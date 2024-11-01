@@ -1,72 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/layout.css" />
     <link rel="stylesheet" href="/css/style.css" />
-
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
     <title>Maze</title>
-</head>
-<body>
-    <!--Navigation Bar-->
-    <header>
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <!-- Brand Logo -->
-            <a class="navbar-brand" href="index.html">
-              <img src="/images/Maze logo white.png" alt="Logo" />
-            </a>
-  
-            <!-- Toggle Button for Mobile View -->
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-  
-            <!-- Navbar Links (Centered) and Button (Right) -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Product</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contact Us</a>
-                </li>
+  </head>
+  <body class="bg-[#191919] text-white">
 
-              </ul>
-  
-              <!-- Profile Button -->
-              <form class="ms-auto" style="position: relative;">
-                <button class="btn" type="button" id="profileBtn">
-                    <img src="/images/bussiness-man.png" alt="Profile">
-                </button>
-                <!-- Hidden Login/Signup Links -->
-                <div id="loginSignup" class="login-signup">
-                    <a href="/login" class="login-signup-link">Login</a>
-                    <a href="/signup" class="login-signup-link">Sign Up</a>
-                </div>
-              </form>
-            </div>
+      <header>
+        <!--Logo-->
+        <nav class="flex items-center justify-between px-[8%] py-[10px]">
+          <div class="w-[5%]">
+            <a href="index.html"><img src="/images/Maze logo white.png" alt="" /></a>
           </div>
+          <ul class="flex text-white gap-10">
+            <li class="hover:scale-[120%] hover:text-[#FBC1B1] delay-0 duration-300 ">
+              <a href="#">Home</a>
+            </li>
+            <li class="hover:scale-[120%] hover:text-[#FBC1B1] delay-0 duration-300 ">
+              <a href="#">Product</a>
+            </li>
+            <li class="hover:scale-[120%] hover:text-[#FBC1B1] delay-0 duration-300 ">
+              <a href="#">About Us</a>
+            </li>
+            <li class="hover:scale-[120%] hover:text-[#FBC1B1] delay-0 duration-300 ">
+              <a href="#">Contact Us</a>
+            </li>
+          </ul>
+          <!-- Profile Icon -->
+          <img
+            class="w-[45px] h-[45px]"
+            src="/images/bussiness-man.png"
+            alt=""
+          />
         </nav>
-    </header>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/script.js"></script>  <!-- Link to the new JavaScript file -->
-</body>
+      </header>
+
+      <section class="banner">
+        <div class="container">
+          <img class=" flex " src="/images/image.jpg" alt="">
+        </div>
+      </section>
+
+      <section class="cards">
+        <div class="container">
+          <div class="cards">
+            <a href="/images/"></a>
+          </div>
+        </div>
+      </section>
+
+  </body>
 </html>
