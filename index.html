@@ -4,61 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/css/layout.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <style type="text/tailwindcss">
-      @layer utilities {
-        .content-auto {
-          content-visibility: auto;
-        }
+    <title>Maze</title>
+    <style>
+      /* Custom CSS for diagonal cut effect */
+      .diagonal {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .diagonal::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background-color: white;
+        transform: skewY(-5deg);
+        transform-origin: top left;
       }
     </style>
-    <title>Maze</title>
   </head>
-  <body class="bg-[#191919] text-white">
+  <body class=" text-white">
 
-      <header>
-        <!--Logo-->
-        <nav class="flex items-center justify-between px-[8%] py-[10px]">
-          <div class="w-[5%]">
-            <a href="index.html"><img src="/images/Maze logo white.png" alt="" /></a>
-          </div>
-          <ul class="flex text-white gap-10">
-            <li class="hover:scale-[120%] hover:text-[#FBC1B1] delay-0 duration-300 ">
-              <a href="#">Home</a>
-            </li>
-            <li class="hover:scale-[120%] hover:text-[#FBC1B1] delay-0 duration-300 ">
-              <a href="#">Product</a>
-            </li>
-            <li class="hover:scale-[120%] hover:text-[#FBC1B1] delay-0 duration-300 ">
-              <a href="#">About Us</a>
-            </li>
-            <li class="hover:scale-[120%] hover:text-[#FBC1B1] delay-0 duration-300 ">
-              <a href="#">Contact Us</a>
-            </li>
-          </ul>
-          <!-- Profile Icon -->
-          <img
-            class="w-[45px] h-[45px]"
-            src="/images/bussiness-man.png"
-            alt=""
-          />
-        </nav>
-      </header>
-
-      <section class="banner">
-        <div class="container">
-          <img class=" flex " src="/images/image.jpg" alt="">
+    <!-- Header -->
+    <header class="bg-[#191919]">
+      <nav class="flex items-center justify-between px-[8%] py-[10px]">
+        <div class="w-[5%]">
+          <a href="index.html"><img src="/images/Maze logo white.png" alt="Logo" /></a>
         </div>
-      </section>
+        <ul class="flex text-white gap-10">
+          <li class="hover:scale-110 hover:text-[#FBC1B1] transition duration-300">
+            <a href="#">Home</a>
+          </li>
+          <li class="hover:scale-110 hover:text-[#FBC1B1] transition duration-300">
+            <a href="#">Product</a>
+          </li>
+          <li class="hover:scale-110 hover:text-[#FBC1B1] transition duration-300">
+            <a href="#">About Us</a>
+          </li>
+          <li class="hover:scale-110 hover:text-[#FBC1B1] transition duration-300">
+            <a href="#">Contact Us</a>
+          </li>
+        </ul>
+        <!-- Profile Icon -->
+        <img class="w-[45px] h-[45px]" src="/images/bussiness-man.png" alt="Profile Icon" />
+      </nav>
+    </header>
 
-      <section class="cards">
-        <div class="container">
-          <div class="cards">
-            <a href="/images/"></a>
-          </div>
-        </div>
-      </section>
+    <!-- Banner Section with Diagonal Cut -->
+    <section class=" bg-cover bg-center h-[80vh]" style="background-image: url('/images/image.png');">
+      <div class="h-full w-full bg-black bg-opacity-0 flex items-center justify-center">
+        <!-- Empty for background overlay effect -->
+      </div>
+    </section>
+
+    <!-- latest-release -->
+     <section class=" py-[10px]"> 
+      <div class="container mx-auto p-4 pt-[10px]">
+        <h2 class="text-white text-[24px] font-bold mb-[10px]"></h2>
+          <div class="card-1"></div>
+          <div class="card-2"></div>
+          <div class="card-3"></div>
+      </div>
+     </section>
 
   </body>
 </html>
