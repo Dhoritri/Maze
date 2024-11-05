@@ -13,15 +13,24 @@ const Collection = () => {
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
       setCategory((prev) => prev.filter((item) => item !== e.target.value));
+    } else {
+      setCategory((prev) => [...prev, e.target.value]);
     }
-    else{
-      setCategory(prev => [...prev, e.target.value]);
+  };
+
+  const toggleSubCategory = (e) => {
+    if (subCategory.includes(e.target.value)) {
+      setSubCategory((prev) => prev.filter((item) => item !== e.target.value));
+    } else {
+      setSubCategory((prev) => [...prev, e.target.value]);
     }
   };
 
   useEffect(() => {
     setFilterProducts(products);
   }, []);
+
+  useEffect(() => {}, [category]);
 
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
@@ -52,6 +61,7 @@ const Collection = () => {
                 type="checkbox"
                 name="checkbox"
                 value={"Men"}
+                onChange={toggleCategory}
               />
               Men
             </p>
@@ -61,6 +71,7 @@ const Collection = () => {
                 type="checkbox"
                 name="checkbox"
                 value={"Women"}
+                onChange={toggleCategory}
               />
               Women
             </p>
@@ -70,6 +81,7 @@ const Collection = () => {
                 type="checkbox"
                 name="checkbox"
                 value={"Kids"}
+                onChange={toggleCategory}
               />
               Kids
             </p>
