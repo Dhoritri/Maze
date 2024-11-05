@@ -22,17 +22,17 @@ const BestSeller = () => {
           best sellers are sure to impress.
         </p>
       </div>
-<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6 place-items-center">
-    {bestSeller.map((item, index) => (
-        <ProductItem
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6 place-items-center">
+        {bestSeller.map((item, index) => (
+          <ProductItem
             key={index}
             id={item._id}
             name={item.name}
             image={item.image}
             price={item.price}
-        />
-    ))}
-</div>
+          />
+        ))}
+      </div>
     </div>
   );
 };

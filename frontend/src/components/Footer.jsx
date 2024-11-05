@@ -8,9 +8,8 @@ const Footer = () => {
         <div>
           <img src={assets.logo} className="mb-5 w-28" alt="Maze Logo" />
           <p className="w-full md:w-2/3 text-gray-500">
-            Wear Maze & Be Amazed Uniqnuess and Comfort
-            Full 100% Organic Cotton 
-            High Quality Print & Embroidery 
+            Wear Maze & Be Amazed Uniqnuess and Comfort Full 100% Organic Cotton
+            High Quality Print & Embroidery
           </p>
         </div>
         <div>

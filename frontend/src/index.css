@@ -2,10 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+@import url('https://fonts.cdnfonts.com/css/satoshi');
 :root {
-  font-family: Outfit;
+  font-family: Satoshi;
 
+ 
+  
   background-color: #191919;
+}
+body{
+  font-family: Outfit;
+}
+a:hover{
+  color: bisque;
+  
+
+}
+a.active:hover{
+  color: bisque;
+
 }
 
 a.active hr {

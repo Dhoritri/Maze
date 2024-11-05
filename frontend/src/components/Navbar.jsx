@@ -5,22 +5,24 @@ const Navbar = () => {
   const [visible, setVisible] = useState(false);
   return (
     <div className=" flex items-center justify-between py-5 font-medium">
-      <Link to='/'><img src={assets.logo} className=" w-28" alt="Maze Logo" /></Link>
+      <Link to="/">
+        <img src={assets.logo} className=" w-28" alt="Maze Logo" />
+      </Link>
       <ul className="hidden sm:flex gap-5 text-sm text-white">
         <NavLink to="/" className="flex flex-col items-center gap-1">
-          <p>Home</p>
+          <p>HOME</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-[#E6E8E6] hidden " />
         </NavLink>
         <NavLink to="/collection" className="flex flex-col items-center gap-1">
-          <p>Collection</p>
+          <p>COLLECTION</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-[#E6E8E6] hidden " />
         </NavLink>
         <NavLink to="/about" className="flex flex-col items-center gap-1">
-          <p>About</p>
+          <p>ABOUT</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-[#E6E8E6] hidden " />
         </NavLink>
         <NavLink to="/contact" className="flex flex-col items-center gap-1">
-          <p>Contact</p>
+          <p>CONTACT</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-[#E6E8E6] hidden " />
         </NavLink>
       </ul>
