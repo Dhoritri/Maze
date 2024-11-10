@@ -58,8 +58,9 @@ const Product = () => {
             <p className="pl-2 text-white">(199)</p>
           </div>
           <p className="text-gray-500 mt-5 text-3xl font-medium">
-            {currency}
+            
             {productData.price}
+            {currency}
           </p>
           <p className="mt-5 text-gray-300 md:w-4/5">
             {productData.description}
