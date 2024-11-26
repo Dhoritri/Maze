@@ -1,5 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
-import { parse } from "dotenv";
+
 import productModel from "../models/productModel.js";
 //add product
 const addProduct = async (req, res) => {
@@ -23,15 +23,25 @@ const addProduct = async (req, res) => {
     );
 
     let imagesUrl = await Promise.all(
-      images.map(async () => {
+      images.map(async (item) => {
         let result = await cloudinary.uploader.upload(item.path, {
           resource_type: "image",
         });
         return result.secure_url;
       })
     );
-    const productData = 
-    {name,description,category,price: Number(price),subCategory,bestseller: bestseller === "true" ? true : false,sizes: JSON.parse(sizes),image: imagesUrl,date: Date.now()};
+    const productData = {
+      name,
+      description,
+      category,
+      price: Number(price),
+      subCategory,
+      bestseller: bestseller === "true" ? true : false,
+      sizes: JSON.parse(sizes),
+      image: imagesUrl,
+      date: Date.now(),
+    };
+
     console.log(productData);
     const product = new productModel(productData);
     await product.save();
@@ -52,9 +62,29 @@ const listProducts = async (req, res) => {
   }
 };
 //remove products
-const removeProduct = async (req, res) => {};
+const removeProduct = async (req, res) => {
+  try {
+    await productModel.findByIdAndDelete(req.body.id);
+    res.json({ success: true, message: "Product Removed" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+    console.log("Request body:", req.body);
+    console.log("Request files:", req.files);
+  }
+};
 
 //single product data
-const singleProduct = async (req, res) => {};
+const singleProduct = async (req, res) => {
+
+  try {
+    const {productId} = req.body
+    const product = await productModel.findById(productId)
+    res.json({ success: true, product })
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
 
 export { addProduct, listProducts, removeProduct, singleProduct };
