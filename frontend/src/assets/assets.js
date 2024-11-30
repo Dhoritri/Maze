@@ -75,6 +75,7 @@ import stripe_logo from './stripe_logo.png'
 import cross_icon from './cross_icon.png'
 import bkash_logo from './bkash_logo.png'
 import nagad_logo from './nagad_logo.png'
+import colder from './colder.jpg'
 
 export const assets = {
     logo,
@@ -97,6 +98,7 @@ export const assets = {
     cross_icon,
     bkash_logo,
     nagad_logo,
+    colder
 }
 
 export const products = [
