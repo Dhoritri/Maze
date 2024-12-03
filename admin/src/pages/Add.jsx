@@ -2,6 +2,7 @@ import { useState } from "react"
 import { assets } from "../assets/assets"
 import axios from "axios"
 import { backendUrl } from "../App"
+import { toast } from "react-toastify"
 const Add = ({token}) => {
     const [image1,setImage1] = useState(false)
     const [image2,setImage2] = useState(false)
@@ -34,9 +35,22 @@ const Add = ({token}) => {
         image4 && formData.append('image4',image4)
 
         const response = await axios.post(backendUrl + "/api/product/add",formData,{headers:{token}})
-        console.log(response.data)
+        if (response.data.success){
+            toast.success(response.data.message)
+            setName('')
+            setDescription('')
+            setImage1(false)
+            setImage2(false)
+            setImage3(false)
+            setImage4(false)
+            setPrice('')
+
+        }else{
+            toast.error(response.data.message)
+        }
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        toast.error(error.message)
     }
     }
   return (
@@ -98,13 +112,13 @@ const Add = ({token}) => {
             <p className="mb-2">Product Sizes</p>
             <div className="flex gap-3">
                 <div onClick={()=> setSizes(prev => prev.includes('S')? prev.filter(item => item !== 'S'): [...prev, 'S'])}>
-                    <p className={`${sizes.includes("S")? "bg-[#2c78cf] text-black":"bg-slate-200 text-black"} bg-slate-200 px-3 py-1 cursor-pointer`}>S</p>
+                    <p className={`${sizes.includes("S")? "bg-[#2c78cf] text-black":"bg-slate-200 text-black"}  px-3 py-1 cursor-pointer`}>S</p>
                 </div>
                 <div onClick={()=> setSizes(prev => prev.includes('M')? prev.filter(item => item !== 'M'): [...prev, 'M'])}>
-                    <p className={`${sizes.includes("M")? "bg-[#2c78cf] text-black" :"bg-slate-200 text-black"} bg-slate-200 px-3 py-1 cursor-pointer`}>M</p>
+                    <p className={`${sizes.includes("M")? "bg-[#2c78cf] text-black" :"bg-slate-200 text-black"}  px-3 py-1 cursor-pointer`}>M</p>
                 </div>
                 <div onClick={()=> setSizes(prev => prev.includes('L')? prev.filter(item => item !== 'L'): [...prev, 'L'])}>
-                    <p className={`${sizes.includes("L")? "bg-[#2c78cf] text-black":"bg-slate-200 text-black"} bg-slate-200 px-3 py-1 cursor-pointer`}>L</p>
+                    <p className={`${sizes.includes("L")? "bg-[#2c78cf] text-black":"bg-slate-200 text-black"}  px-3 py-1 cursor-pointer`}>L</p>
                 </div>
             </div>
         </div>
@@ -116,7 +130,10 @@ const Add = ({token}) => {
 
         <button type="submit" className="w-28 py-3 mt-4 bg-black text-white hover:bg-[#2c78cf] transition .2s ease-in ease-out">Add</button>
     </form>
+    
   )
 }
 
 export default Add
+
+
