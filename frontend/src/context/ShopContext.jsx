@@ -1,17 +1,19 @@
 import { createContext, useEffect, useState } from "react";
-
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 export const ShopContext = createContext();
+
 const ShopContextProvider = (props) => {
   const currency = "/-";
   const delivery_fee = 70;
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "http://localhost:3000";
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
   const [products, setProducts] = useState([]);
+  const [token, setToken] = useState("");
   const navigate = useNavigate();
 
   const addToCart = async (itemId, size) => {
@@ -32,6 +34,14 @@ const ShopContextProvider = (props) => {
       cartData[itemId][size] = 1;
     }
     setCartItems(cartData);
+    if (token) {
+      try {
+        await axios.post("http://localhost:3000" + '/api/cart/add',{itemId,size}, {headers:{token}})
+      } catch (error) {
+        console.log(error);
+        toast.error(error.message)
+      }
+    }
   };
 
   const getCartCount = () => {
@@ -75,15 +85,28 @@ const ShopContextProvider = (props) => {
 
   const getProductsData = async () => {
     try {
-      const response = await axios.get(backendUrl + 'api/product/list');
-      console.log(response.data);
-    } catch (error) {
+      const response = await axios.get(backendUrl + "/api/product/list");
 
+      if (response.data.success) {
+        setProducts(response.data.products);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error(error.message);
     }
   };
+
   useEffect(() => {
     getProductsData();
   }, []);
+
+  useEffect(()=>{
+    if (!token && localStorage.getItem('token')) {
+      setToken(localStorage.getItem('token'));
+    }
+  },[])
   const value = {
     products,
     currency,
@@ -99,6 +122,8 @@ const ShopContextProvider = (props) => {
     getCartAmount,
     navigate,
     backendUrl,
+    setToken,
+    token,
   };
   return (
     <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>
