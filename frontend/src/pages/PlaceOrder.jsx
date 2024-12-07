@@ -42,7 +42,6 @@ const PlaceOrder = () => {
       let orderItems = [];
       for (const items in cartItems) {
         for (const item in cartItems[items]) {
-          //prod added in cart
           if (cartItems[items][item] > 0) {
             const itemInfo = structuredClone(
               products.find((product) => product._id === items)
@@ -55,13 +54,14 @@ const PlaceOrder = () => {
           }
         }
       }
+
       let orderData = {
         address: formData,
         items: orderItems,
         amount: getCartAmount() + delivery_fee,
       };
+
       switch (method) {
-        //call for cashh on deliveery
         case "cod": {
           const response = await axios.post(
             backendUrl + "/api/order/place",
@@ -77,8 +77,62 @@ const PlaceOrder = () => {
           }
           break;
         }
-        default:
+        case "bkash": {
+          const transactionId = document.getElementById("transactionId").value;
+          const paymentPhone = document.getElementById("paymentPhone").value;
+
+          if (!transactionId || !paymentPhone) {
+            toast.error("Transaction ID and Phone Number are required");
+            return;
+          }
+
+          orderData.transactionId = transactionId;
+          orderData.paymentPhone = paymentPhone;
+
+          const response = await axios.post(
+            backendUrl + "/api/order/bkash",
+            orderData,
+            { headers: { token } }
+          );
+
+          if (response.data.success) {
+            setCartItems({});
+            navigate("/orders");
+          } else {
+            toast.error(response.data.message);
+          }
           break;
+        }
+        case "nagad": {
+          const transactionId = document.getElementById("transactionId").value;
+          const paymentPhone = document.getElementById("paymentPhone").value;
+
+          if (!transactionId || !paymentPhone) {
+            toast.error("Transaction ID and Phone Number are required");
+            return;
+          }
+
+          orderData.transactionId = transactionId;
+          orderData.paymentPhone = paymentPhone;
+
+          const response = await axios.post(
+            backendUrl + "/api/order/nagad",
+            orderData,
+            { headers: { token } }
+          );
+
+          if (response.data.success) {
+            setCartItems({});
+            navigate("/orders");
+          } else {
+            toast.error(response.data.message);
+          }
+          break;
+        }
+        default: {
+          toast.error("Invalid payment method selected");
+          break;
+        }
       }
     } catch (error) {
       console.log(error);
@@ -235,11 +289,13 @@ const PlaceOrder = () => {
           {method === "bkash" && (
             <div className="mt-6">
               <input
+                id="paymentPhone"
                 type="text"
                 placeholder="Your bKash Account Number"
                 className="border border-white rounded py-1.5 px-3.5 w-full mb-4"
               />
               <input
+                id="transactionId"
                 type="text"
                 placeholder="bKash Transaction ID"
                 className="border border-white rounded py-1.5 px-3.5 w-full"
@@ -250,11 +306,13 @@ const PlaceOrder = () => {
           {method === "nagad" && (
             <div className="mt-6">
               <input
+                id="paymentPhone"
                 type="text"
                 placeholder="Your Nagad Account Number"
                 className="border border-white rounded py-1.5 px-3.5 w-full mb-4"
               />
               <input
+                id="transactionId"
                 type="text"
                 placeholder="Nagad Transaction ID"
                 className="border border-white rounded py-1.5 px-3.5 w-full"
