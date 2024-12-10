@@ -8,7 +8,7 @@ const Login = () => {
   const {token,setToken,navigate} = useContext(ShopContext)
   const [name,setName]= useState('');
   const [email, setEmail] = useState('');
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   const [password, setPassword] = useState('');
   const onSubmitHandler = async(event)=>{
       event.preventDefault();
