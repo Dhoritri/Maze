@@ -7,12 +7,13 @@ const Login = () => {
   const {token,setToken,navigate} = useContext(ShopContext)
   const [name,setName]= useState('');
   const [email, setEmail] = useState('');
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [password, setPassword] = useState('');
   const onSubmitHandler = async(event)=>{
       event.preventDefault();
       try {
         if (currentState === 'Sign Up') {
-            const response = await axios.post('http://localhost:3000' + '/api/user/register',{name,email,password});
+            const response = await axios.post(backendUrl + '/api/user/register',{name,email,password});
             if(response.data.success){
               setToken(response.data.token);
               localStorage.setItem('token',response.data.token);
@@ -20,7 +21,7 @@ const Login = () => {
               toast.error(response.data.message);
             }
         } else {
-          const response = await axios.post('http://localhost:3000' + '/api/user/login', {email,password});
+          const response = await axios.post(backendUrl + '/api/user/login', {email,password});
           if(response.data.success){
             setToken(response.data.token);
             localStorage.setItem('token',response.data.token);

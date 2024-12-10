@@ -53,8 +53,8 @@ const Cart = () => {
                   </p>
                   <div className="flex items-center gap-5 mt-2">
                     <p>
-                      {currency}
                       {productData.price}
+                      {currency}
                     </p>
                     <p className="px-2 sm:px-3 sm:py-1 border bg-gray-700">
                       {item.size}
