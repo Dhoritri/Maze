@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { backendUrl } from "../App";
+//import { backendUrl } from "../App";
 import { toast } from "react-toastify";
 
 const Login = ({ setToken }) => {
@@ -10,7 +10,7 @@ const Login = ({ setToken }) => {
   const onSubmitHandler = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post(backendUrl + "/api/user/admin", {
+      const response = await axios.post('https://maze-panel.vercel.app' + "/api/user/admin", {
         email,
         password,
       });
