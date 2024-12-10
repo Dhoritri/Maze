@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 const Login = () => {
   const [currentState, setCurrentState] = useState('Login');
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
   const {token,setToken,navigate} = useContext(ShopContext)
   const [name,setName]= useState('');
   const [email, setEmail] = useState('');
