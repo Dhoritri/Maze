@@ -58,10 +58,25 @@ const Product = () => {
             <p className="pl-2 text-white">(199)</p>
           </div>
           <p className="text-gray-500 mt-5 text-3xl font-medium">
-            
-            {productData.price}
-            {currency}
+            {productData.discount > 0 ? (
+              <>
+                <span className="text-red-500">
+                  {productData.discount}
+                  {currency}
+                </span>
+                <span className="text-sm text-gray-400 line-through ml-2">
+                  {productData.price}
+                  {currency}
+                </span>
+              </>
+            ) : (
+              <>
+                {productData.price}
+                {currency}
+              </>
+            )}
           </p>
+
           <p className="mt-5 text-gray-300 md:w-4/5">
             {productData.description}
           </p>
@@ -81,7 +96,10 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <button onClick={()=>addToCart(productData._id,size)} className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700">
+          <button
+            onClick={() => addToCart(productData._id, size)}
+            className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+          >
             ADD TO CART
           </button>
           <hr className="mt-8 sm:w-4/5" />

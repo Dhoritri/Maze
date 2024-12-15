@@ -86,5 +86,33 @@ const singleProduct = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+//product update
+// Inside productController.js
 
-export { addProduct, listProducts, removeProduct, singleProduct };
+const updateDiscount = async (req, res) => {
+  try {
+    const { id, discount } = req.body;
+
+    // Validate discount is a number and >= 0
+    if (typeof discount !== 'number' || discount < 0) {
+      return res.json({ success: false, message: "Invalid discount value" });
+    }
+
+    const product = await productModel.findByIdAndUpdate(
+      id, 
+      { discount },
+      { new: true }
+    );
+
+    if (!product) {
+      return res.json({ success: false, message: "Product not found" });
+    }
+
+    res.json({ success: true, message: "Discount updated successfully" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+}
+
+export { addProduct, listProducts, removeProduct, singleProduct, updateDiscount };
