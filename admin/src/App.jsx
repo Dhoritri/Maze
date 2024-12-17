@@ -6,7 +6,7 @@ import List from "./pages/List";
 import Orders from "./pages/Orders";
 import { useEffect, useState } from "react";
 import Login from "./components/Login";
-export const backendUrl = import.meta.env.VITE_BACKEND_URL
+export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
