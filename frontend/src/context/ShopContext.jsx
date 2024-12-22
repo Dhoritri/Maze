@@ -8,14 +8,14 @@ export const ShopContext = createContext();
 const ShopContextProvider = (props) => {
   const currency = "/-";
   const delivery_fee = 70;
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
   const [products, setProducts] = useState([]);
   const [token, setToken] = useState("");
   const navigate = useNavigate();
-
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  
   const addToCart = async (itemId, size) => {
     if (!size) {
       toast.error("Please select a size");

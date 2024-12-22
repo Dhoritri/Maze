@@ -1,0 +1,186 @@
+<mxfile host="app.diagrams.net" modified="2024-12-22T00:00:00Z" agent="Mozilla/5.0" version="15.8.7" type="device">
+  <!-- =========================
+       PAGE 1: LEVEL 0 DFD
+       ========================= -->
+  <diagram id="Level0DFD" name="Level 0 DFD">
+    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1"
+      arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827"
+      math="0" shadow="0">
+      <root>
+        <!-- Root cells -->
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ENTITIES -->
+        <mxCell id="entityUser" value="User" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=2;strokeColor=#000000;fillColor=#dae8fc"
+                 vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="80" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="entityAdmin" value="Admin" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=2;strokeColor=#000000;fillColor=#f8cecc"
+                 vertex="1" parent="1">
+          <mxGeometry x="650" y="200" width="80" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- DATABASE (DATA STORE) -->
+        <mxCell id="entityDatabase" value="Database (User, Product, Order Info)" style="shape=process;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#d5e8d4"
+                 vertex="1" parent="1">
+          <mxGeometry x="350" y="400" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- PROCESSES -->
+        <mxCell id="processUserMgmt" value="User Management" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#fff2cc"
+                 vertex="1" parent="1">
+          <mxGeometry x="200" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="processProductMgmt" value="Product Management" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#fff2cc"
+                 vertex="1" parent="1">
+          <mxGeometry x="200" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="processOrderMgmt" value="Order Management" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#fff2cc"
+                 vertex="1" parent="1">
+          <mxGeometry x="200" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- DATA FLOWS (EDGES) - LEVEL 0 -->
+        <!-- User -> User Management -->
+        <mxCell id="flowUserToUserMgmt" value="User data (reg/login)" style="edgeStyle=orthConnector;rounded=1;jettySize=auto;orthogonalLoop=1;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1"
+                 edge="1" parent="1" source="entityUser" target="processUserMgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- User -> Product Management -->
+        <mxCell id="flowUserToProductMgmt" value="Browse/Add product" style="edgeStyle=orthConnector;rounded=1;jettySize=auto;orthogonalLoop=1;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1"
+                 edge="1" parent="1" source="entityUser" target="processProductMgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- User -> Order Management -->
+        <mxCell id="flowUserToOrderMgmt" value="Place order" style="edgeStyle=orthConnector;rounded=1;jettySize=auto;orthogonalLoop=1;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1"
+                 edge="1" parent="1" source="entityUser" target="processOrderMgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Admin -> Product Management -->
+        <mxCell id="flowAdminToProductMgmt" value="Manage products" style="edgeStyle=orthConnector;rounded=1;jettySize=auto;orthogonalLoop=1;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1"
+                 edge="1" parent="1" source="entityAdmin" target="processProductMgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Admin -> Order Management -->
+        <mxCell id="flowAdminToOrderMgmt" value="View orders" style="edgeStyle=orthConnector;rounded=1;jettySize=auto;orthogonalLoop=1;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1"
+                 edge="1" parent="1" source="entityAdmin" target="processOrderMgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Product Mgmt -> Database -->
+        <mxCell id="flowProductMgmtToDB" value="Product data" style="edgeStyle=orthConnector;rounded=1;jettySize=auto;orthogonalLoop=1;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1"
+                 edge="1" parent="1" source="processProductMgmt" target="entityDatabase">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Order Mgmt -> Database -->
+        <mxCell id="flowOrderMgmtToDB" value="Order data" style="edgeStyle=orthConnector;rounded=1;jettySize=auto;orthogonalLoop=1;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1"
+                 edge="1" parent="1" source="processOrderMgmt" target="entityDatabase">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+  
+  <!-- =========================
+       PAGE 2: LEVEL 1 DFD
+       ========================= -->
+  <diagram id="Level1DFD" name="Level 1 DFD">
+    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1"
+      arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827"
+      math="0" shadow="0">
+      <root>
+        <!-- Root cells -->
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- USER MANAGEMENT PROCESS -->
+        <mxCell id="processUM" value="User Management" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#fff2cc"
+                 vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="200" height="80" as="geometry" />
+        </mxCell>
+        <!-- Activities inside user management -->
+        <mxCell id="umActivity1" value="Register User" style="text;whiteSpace=wrap;html=1;align=left"
+                 vertex="1" parent="processUM">
+          <mxGeometry x="10" y="10" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="umActivity2" value="Login User" style="text;whiteSpace=wrap;html=1;align=left"
+                 vertex="1" parent="processUM">
+          <mxGeometry x="10" y="40" width="80" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- PRODUCT MANAGEMENT PROCESS -->
+        <mxCell id="processPM" value="Product Management" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#fff2cc"
+                 vertex="1" parent="1">
+          <mxGeometry x="360" y="100" width="220" height="100" as="geometry" />
+        </mxCell>
+        <!-- Activities inside product management -->
+        <mxCell id="pmActivity1" value="List Products" style="text;whiteSpace=wrap;html=1;align=left"
+                 vertex="1" parent="processPM">
+          <mxGeometry x="10" y="10" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pmActivity2" value="Add Product" style="text;whiteSpace=wrap;html=1;align=left"
+                 vertex="1" parent="processPM">
+          <mxGeometry x="10" y="40" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pmActivity3" value="Update Product" style="text;whiteSpace=wrap;html=1;align=left"
+                 vertex="1" parent="processPM">
+          <mxGeometry x="110" y="10" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pmActivity4" value="Remove Product" style="text;whiteSpace=wrap;html=1;align=left"
+                 vertex="1" parent="processPM">
+          <mxGeometry x="110" y="40" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ORDER MANAGEMENT PROCESS -->
+        <mxCell id="processOM" value="Order Management" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#fff2cc"
+                 vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="200" height="80" as="geometry" />
+        </mxCell>
+        <!-- Activities inside order management -->
+        <mxCell id="omActivity1" value="Place Order" style="text;whiteSpace=wrap;html=1;align=left"
+                 vertex="1" parent="processOM">
+          <mxGeometry x="10" y="10" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="omActivity2" value="View Orders" style="text;whiteSpace=wrap;html=1;align=left"
+                 vertex="1" parent="processOM">
+          <mxGeometry x="10" y="40" width="90" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- DATA FLOWS for Level 1 (simplified) -->
+
+        <!-- USER MANAGEMENT: DataFlow for user credentials -->
+        <mxCell id="flowUMCreds" value="User credentials" style="edgeStyle=orthConnector;rounded=1;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1"
+                 edge="1" parent="1" source="umActivity1" target="umActivity2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- PRODUCT MANAGEMENT: DataFlow for product details/list -->
+        <mxCell id="flowPMDetails" value="Product details" style="edgeStyle=orthConnector;rounded=1;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1"
+                 edge="1" parent="1" source="pmActivity2" target="pmActivity3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flowPMList" value="Product list" style="edgeStyle=orthConnector;rounded=1;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1"
+                 edge="1" parent="1" source="pmActivity3" target="pmActivity4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ORDER MANAGEMENT: DataFlow for order details/history -->
+        <mxCell id="flowOMDetails" value="Order details" style="edgeStyle=orthConnector;rounded=1;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1"
+                 edge="1" parent="1" source="omActivity1" target="omActivity2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
