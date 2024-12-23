@@ -31,4 +31,9 @@ JWT_SECRET = "<SECRET>"
 
 ADMIN_EMAIL = ""
 ADMIN_PASSWORD = ""
+
+Create a .env file in the frontend directory with the following:
+VITE_BACKEND_URL='http://localhost:3000'
+Create a .env file in the adminn directory with the following:
+VITE_BACKEND_URL='http://localhost:3000'
 **
